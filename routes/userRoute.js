@@ -13,8 +13,8 @@ let updateCount = 0;
 userRoute.use((req, res, next) => {
     if (req.path === '/addData') {
       addCount++;
-    } else if (req.path === '/edit-data/:id') {
-      updateCount++;
+    } else if (req.path.startsWith('/edit-data')) {
+        updateCount++;
     }
     next();
   });

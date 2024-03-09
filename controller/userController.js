@@ -31,10 +31,10 @@ const addData = asyncHandler(async (req, res) => {
 const deleteData = asyncHandler(async (req, res) => {
     const { id } = req.params;
     try {
+        const startTime = new Date(); // Start measuring execution time
         const deleteData = await dataBase.findByIdAndDelete(id);
-        res.json({
-          deleteData,
-        });
+        const executionTime = measureExecutionTime(startTime); // Measure execution time
+        res.json({ data:deleteData,executionTime});
     } catch (error) {
       throw new Error(error);
     }
@@ -44,10 +44,12 @@ const deleteData = asyncHandler(async (req, res) => {
   const updateData = asyncHandler(async (req, res) => {
     const { id } = req.params;
     try {
+        const startTime = new Date(); // Start measuring execution time
         const updatedData = await dataBase.findByIdAndUpdate(id, req.body, {
             new: true,
           });
-          res.json(updatedData);
+          const executionTime = measureExecutionTime(startTime); // Measure execution time
+          res.json({data:updatedData,executionTime});
     } catch (error) {
       throw new Error(error);
     }
@@ -57,8 +59,10 @@ const deleteData = asyncHandler(async (req, res) => {
   const resetData = asyncHandler(async (req, res) => {
    
     try {
+        const startTime = new Date(); // Start measuring execution time
         await dataBase.deleteMany({});
-    res.json({ message: "Data reset successfully" });
+        const executionTime = measureExecutionTime(startTime); // Measure execution time
+    res.json({ message: "Data reset successfully",executionTime });
       
     } catch (error) {
       throw new Error(error);
