@@ -1,9 +1,13 @@
+
 const express = require("express");
 const userRoute = express();
 const {addData,updateData,deleteData,resetData,Count,allData} = require("../controller/userController");
+const executionTimeMiddleware = require('../middlewares/executionTime')
 
 userRoute.use(express.json());
 // userRoute.use(express.urlencoded({ extended: true }));
+
+userRoute.use(executionTimeMiddleware);
 let addCount = 0;
 let updateCount = 0;
 userRoute.use((req, res, next) => {

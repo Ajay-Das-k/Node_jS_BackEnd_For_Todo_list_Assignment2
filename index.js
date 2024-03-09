@@ -5,8 +5,12 @@ const morgan=require("morgan")
 
 const express = require("express");
 const app = express();
+
+
+
 dbConnect.dbConnect();
 app.use(morgan("dev"))
+
 
 //for user routes
 const userRoute = require('./routes/userRoute');
