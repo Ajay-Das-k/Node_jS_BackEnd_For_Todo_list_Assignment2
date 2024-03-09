@@ -29,5 +29,6 @@ To get started with the project, follow these steps:
 # Postman config file
 
 ```json
-<script src="https://gist.github.com/yourusername/gistid.js"></script>
-   
+```json
+![](https://raw.githubusercontent.com/Ajay-Das-k/Node_jS_BackEnd_For_Todo_list_Assignment2/main/LocalServer_Assignment.postman_collection.json)
+
